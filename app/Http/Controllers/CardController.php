@@ -34,11 +34,9 @@ class CardController extends Controller
             return "null";
         }
         else
-        {
-            return $list;
-        }
-
+        {   
         return response()->json(['cards'=>$list->cards]);
+        }
     }
 
     public function show ($boardID,$userID,$listID,$cardID)
