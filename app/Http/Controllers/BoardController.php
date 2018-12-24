@@ -45,6 +45,7 @@ class BoardController extends Controller
        $userID->boards()->create([
 
             'name'    => $request->name,
+            'user_id'    => $userID,
         ]);
         return response()->json(['message' => 'success'], '200');
     }
