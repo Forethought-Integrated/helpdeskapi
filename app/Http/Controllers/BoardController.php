@@ -42,7 +42,7 @@ class BoardController extends Controller
     {
        $this->validate($request,['name'=>'required']);
 
-       $userID->boards()->create([
+       Board::create([
 
             'name'    => $request->name,
             'user_id'    => $userID,
