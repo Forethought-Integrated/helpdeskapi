@@ -45,7 +45,7 @@ class ListController extends Controller
 
      public function store(Request $request,$boardID,$userID)
     {
-        $this->validate($request,['name'=>'required']);
+        $this->validate($request,['listName'=>'required']);
 
         $board=Board::find($boardID);
 
@@ -53,7 +53,8 @@ class ListController extends Controller
             return response()->json(['status' => 'error', 'message' => 'unauthorized'], '401');
         }
         $board->lists()->create([
-            'name' => $request->name,
+            'name' => $request->listName,
+            'boardID' => $boardID,
         ]);
         return response()->json(['message' => 'success'], '200');
     }

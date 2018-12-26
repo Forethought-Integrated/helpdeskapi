@@ -59,7 +59,7 @@ class CardController extends Controller
 
      public function store(Request $request, $boardID,$userID,$listID)
     {
-        $this->validate($request,['name'=>'required']);
+        $this->validate($request,['card_name'=>'required']);
 
         $board=Board::find($boardID);
 
@@ -68,7 +68,8 @@ class CardController extends Controller
             return response()->json(['status' => 'error', 'message' => 'unauthorized'], '401');
         }
         $board->lists()->find($listID)->cards()->create([
-            'name' => $request->name,
+            'name' => $request->card_name,
+            'description' => $request->card_description,
         ]);
         return response()->json(['message' => 'success'], '200');
     }
